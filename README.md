@@ -16,14 +16,22 @@ This is a PyQt5-based desktop application that allows users to perform various i
 
 ## Installation
 1. Clone the repository:
-   - git clone https://github.com/Dr-Mystic/Digital-Image-Processor.git
-   - cd Digital-Image-Processor
+```bash
+   git clone https://github.com/Dr-Mystic/Digital-Image-Processor.git
+```
+```bash
+   cd Digital-Image-Processor
+```
 
 2. Install dependencies:
-   - pip install -r requirements.txt
+```bash
+   pip install -r requirements.txt
+```
 
 3. Run the application:
-   - python image_processor.py
+```bash
+   python image_processor.py
+```
 
 ## Usage
 - Use the "Open Image" button to load an image.
