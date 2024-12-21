@@ -25,7 +25,8 @@ def scale_image(img, scale):
     return cv2.resize(img, (width, height))
 
 def edge_detection(img):
-    return cv2.Canny(img, 100, 200)
+    temp = cv2.Canny(img, 100, 200)
+    return cv2.bitwise_not(temp)
 
 def flip_image(img, axis):
     if axis == "Horizontal":
