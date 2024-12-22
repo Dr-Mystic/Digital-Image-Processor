@@ -39,7 +39,7 @@ def flip_image(img, axis):
         return img  # No flip
 
 def blur_image(img):
-    return cv2.GaussianBlur(img, (5, 5), 0)
+    return cv2.GaussianBlur(img, (21, 21), 0)
 
 def sharpen_image(img):
     kernel = np.array([[-1, -1, -1],
@@ -47,6 +47,13 @@ def sharpen_image(img):
                        [-1, -1, -1]])
     sharpened_img = cv2.filter2D(img, -1, kernel)
     return sharpened_img
+
+def pencil_sketch(img):
+    gray_image = convert_to_grayscale(img)
+    inverted_image = cv2.bitwise_not(gray_image)
+    blurred_image = blur_image(inverted_image)
+    inverted_blurred = cv2.bitwise_not(blurred_image)
+    return cv2.divide(gray_image, inverted_blurred, scale=256.0)
 
 def save_image(path, img):
     cv2.imwrite(path, img)
@@ -83,7 +90,7 @@ class ImageProcessorApp(QMainWindow):
         self.process_options = QComboBox()
         self.process_options.addItems(["Select Option", "Convert to Grayscale", "Rotate Image", 
                                         "Scale Image", "Edge Detection", "Flip Image", "Blur Image", 
-                                        "Sharpen Image"])
+                                        "Sharpen Image", "Pencil Sketch"])
         self.layout.addWidget(self.process_options)
 
         # QLabel for displaying the image
@@ -122,6 +129,8 @@ class ImageProcessorApp(QMainWindow):
                 processed_image = blur_image(self.image)
             elif selected_option == "Sharpen Image":
                 processed_image = sharpen_image(self.image)
+            elif selected_option == "Pencil Sketch":
+                processed_image = pencil_sketch(self.image)
 
             if processed_image is not None:
                 self.image = processed_image
