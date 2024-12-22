@@ -1,7 +1,7 @@
 # Image Processor App
 
 ## Description
-This is a PyQt5-based desktop application that allows users to perform various image processing tasks using OpenCV. Users can open images, apply transformations like grayscale conversion, rotation, scaling, edge detection, flipping, blurring, and sharpening, and then save the processed images.
+This is a PyQt5-based desktop application that allows users to perform various image processing tasks using OpenCV. Users can open images, apply transformations like grayscale conversion, rotation, scaling, edge detection, flipping, blurring, sharpening, converting to pencil sketch, and then save the processed images.
 
 ## Features
 - Open and display images
@@ -11,6 +11,7 @@ This is a PyQt5-based desktop application that allows users to perform various i
 - Perform edge detection
 - Flip images horizontally, vertically, or both
 - Apply blur and sharpening filters
+- Convert image to a pencil sketch
 - Undo actions and restore previous image states
 - Save the processed images
 
