@@ -53,8 +53,9 @@ def pencil_sketch(img):
     inverted_image = cv2.bitwise_not(gray_image)
     blurred_image = blur_image(inverted_image)
     inverted_blurred = cv2.bitwise_not(blurred_image)
-    temp = cv2.divide(gray_image, inverted_blurred, scale=256.0)
-    return blur_image(sharpen_image(sharpen_image(temp)))
+    blended = cv2.divide(gray_image, inverted_blurred, scale=256.0)
+    sharp_image = sharpen_image(sharpen_image(blended))
+    return blur_image(sharp_image)
 
 def save_image(path, img):
     cv2.imwrite(path, img)
